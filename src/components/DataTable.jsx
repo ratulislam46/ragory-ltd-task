@@ -1,5 +1,7 @@
+import React from 'react';
+
 const DataTable = ({ data, visibleColumns }) => {
-  // Safety check
+
   if (!Array.isArray(data) || data.length === 0) {
     return (
       <p className="text-center text-gray-500 py-10">
@@ -8,8 +10,26 @@ const DataTable = ({ data, visibleColumns }) => {
     );
   }
 
-  const renderCell = (value) => {
-    if (value === null || value === undefined) return "";
+  // Render cell function with plugin handling
+  const renderCell = (value, colName) => {
+    if (colName === "plugin") {
+      if (!value) return <span className="text-gray-400">No Plugin</span>;
+      if (value.short_url) {
+        return (
+          <a
+            href={value.short_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:underline"
+          >
+            Open Plugin
+          </a>
+        );
+      }
+      return <span className="text-gray-400">No Plugin</span>;
+    }
+
+    if (value === null || value === undefined) return "N/A";
     if (typeof value === "string" && value.includes("<")) {
       return <span dangerouslySetInnerHTML={{ __html: value }} />;
     }
@@ -23,7 +43,7 @@ const DataTable = ({ data, visibleColumns }) => {
         {/* Table Header */}
         <thead className="bg-gray-50 sticky top-0 z-10">
           <tr>
-            {visibleColumns?.map((col) => (
+            {visibleColumns.map((col) => (
               <th
                 key={col}
                 className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider"
@@ -37,16 +57,13 @@ const DataTable = ({ data, visibleColumns }) => {
         {/* Table Body */}
         <tbody className="bg-white divide-y divide-gray-200">
           {data.map((row, rowIndex) => (
-            <tr
-              key={rowIndex}
-              className="hover:bg-gray-50 transition-colors duration-150"
-            >
-              {visibleColumns?.map((col) => (
+            <tr key={rowIndex} className="hover:bg-gray-50 transition-colors duration-150">
+              {visibleColumns.map((col) => (
                 <td
                   key={col}
                   className="px-4 py-2 text-sm text-gray-800 whitespace-normal"
                 >
-                  {renderCell(row[col])}
+                  {renderCell(row[col], col)}
                 </td>
               ))}
             </tr>

@@ -5,7 +5,6 @@ import DataTable from '../components/DataTable';
 const Home = () => {
     const [searchField, setSearchField] = useState("sell_id");
     const [searchQuery, setSearchQuery] = useState("");
-
     const columns = Object.keys(jsonData.data[0]);
     const [visibleColumns, setVisibleColumns] = useState(columns);
 
