@@ -48,6 +48,7 @@ console.log(data);
   return (
     <div className="relative overflow-x-auto border border-gray-200 rounded-lg shadow-sm">
       <table className="min-w-full divide-y divide-gray-200">
+
         {/* Table Header */}
         <thead className="bg-gray-50 sticky top-0 z-20">
           <tr>
@@ -77,6 +78,7 @@ console.log(data);
             </tr>
           ))}
         </tbody>
+        
       </table>
     </div>
   );
