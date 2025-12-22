@@ -48,6 +48,7 @@ const Home = () => {
 
     return (
         <div className="p-4 space-y-4">
+
             {/* ===== Search Section ===== */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-2 sm:space-y-0">
                 <select
@@ -55,7 +56,7 @@ const Home = () => {
                     value={searchField}
                     onChange={(e) => setSearchField(e.target.value)}
                 >
-                    {columns?.map((col) => (
+                    {columns.map(col => (
                         <option key={col} value={col}>
                             {col.replace(/_/g, " ")}
                         </option>
@@ -71,9 +72,25 @@ const Home = () => {
                 />
             </div>
 
+            {/* ===== Column Settings (Hide/Show) ===== */}
+            <div className="flex flex-wrap gap-4 p-2 bg-gray-50 border border-gray-200 rounded-md">
+                {columns.map(col => (
+                    <label key={col} className="flex items-center space-x-2 text-sm text-gray-700">
+                        <input
+                            type="checkbox"
+                            checked={visibleColumns.includes(col)}
+                            onChange={() => toggleColumn(col)}
+                            className="form-checkbox h-4 w-4 text-blue-600"
+                        />
+                        <span>{col.replace(/_/g, " ")}</span>
+                    </label>
+                ))}
+            </div>
+
             {/* ===== Data Table ===== */}
             <DataTable data={filteredData} visibleColumns={visibleColumns} />
         </div>
+
     );
 };
 
