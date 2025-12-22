@@ -3,7 +3,7 @@ import Loading from './Loading';
 import NorecordsFound from './NorecordsFound';
 
 const DataTable = ({ data, visibleColumns, loading }) => {
-
+console.log(data);
   if (loading) return <Loading />
 
   if (!Array.isArray(data) || data.length === 0) {
