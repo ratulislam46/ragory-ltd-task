@@ -10,10 +10,11 @@ const DataTable = ({ data, visibleColumns }) => {
     );
   }
 
-  // Render cell function with plugin handling
+  // Render cell function with plugin & courier handling
   const renderCell = (value, colName) => {
+    // Plugin column
     if (colName === "plugin") {
-      if (!value) return <span className="text-gray-400">No Plugin</span>;
+      if (!value) return <span className="text-gray-400 italic">No Plugin</span>;
       if (value.short_url) {
         return (
           <a
@@ -26,10 +27,18 @@ const DataTable = ({ data, visibleColumns }) => {
           </a>
         );
       }
-      return <span className="text-gray-400">No Plugin</span>;
+      return <span className="text-gray-400 italic">No Plugin</span>;
     }
 
-    if (value === null || value === undefined) return "N/A";
+    // Curier Name
+    if (colName === "curier_name") {
+      if (!value || value === "") {
+        return <span className="text-gray-400 italic">No Courier</span>;
+      }
+    }
+
+    // Default rendering
+    if (value === null || value === undefined) return "";
     if (typeof value === "string" && value.includes("<")) {
       return <span dangerouslySetInnerHTML={{ __html: value }} />;
     }
@@ -41,12 +50,12 @@ const DataTable = ({ data, visibleColumns }) => {
     <div className="relative overflow-x-auto border border-gray-200 rounded-lg shadow-sm">
       <table className="min-w-full divide-y divide-gray-200">
         {/* Table Header */}
-        <thead className="bg-gray-50 sticky top-0 z-10">
+        <thead className="bg-gray-50 sticky top-0 z-20">
           <tr>
             {visibleColumns.map((col) => (
               <th
                 key={col}
-                className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider"
+                className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase "
               >
                 {col.replace(/_/g, " ")}
               </th>
