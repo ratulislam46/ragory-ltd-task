@@ -1,20 +1,19 @@
 import React from 'react';
+import Loading from './Loading';
+import NorecordsFound from './NorecordsFound';
 
-const DataTable = ({ data, visibleColumns }) => {
+const DataTable = ({ data, visibleColumns, loading }) => {
+
+  if (loading) return <Loading />
 
   if (!Array.isArray(data) || data.length === 0) {
-    return (
-      <p className="text-center text-gray-500 py-10">
-        No records found
-      </p>
-    );
+    return <NorecordsFound/>
   }
 
-  // Render cell function with plugin & courier handling
   const renderCell = (value, colName) => {
     // Plugin column
     if (colName === "plugin") {
-      if (!value) return <span className="text-gray-400 italic">No Plugin</span>;
+      if (!value) return <NorecordsFound />;
       if (value.short_url) {
         return (
           <a
@@ -33,7 +32,7 @@ const DataTable = ({ data, visibleColumns }) => {
     // Curier Name
     if (colName === "curier_name") {
       if (!value || value === "") {
-        return <span className="text-gray-400 italic">No Courier</span>;
+        return <NorecordsFound />;
       }
     }
 
