@@ -1,19 +1,19 @@
 import React from 'react';
 import Loading from './Loading';
-import NorecordsFound from './NorecordsFound';
+import NoFound from './NoFound';
 
 const DataTable = ({ data, visibleColumns, loading }) => {
 console.log(data);
   if (loading) return <Loading />
 
   if (!Array.isArray(data) || data.length === 0) {
-    return <NorecordsFound/>
+    return <NoFound text={"No Recors Found"}/>
   }
 
   const renderCell = (value, colName) => {
     // Plugin column
     if (colName === "plugin") {
-      if (!value) return <NorecordsFound />;
+      if (!value) return <NoFound text={"No Plugin"} />;
       if (value.short_url) {
         return (
           <a
@@ -32,7 +32,7 @@ console.log(data);
     // Curier Name
     if (colName === "curier_name") {
       if (!value || value === "") {
-        return <NorecordsFound />;
+        return <NoFound text={"No Curier"} />;
       }
     }
 
