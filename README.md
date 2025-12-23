@@ -55,5 +55,3 @@ npm run dev
 ```bash
 git clone https://github.com/ratulislam46/ragory-ltd-task.git
 
-
----
