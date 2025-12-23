@@ -45,38 +45,6 @@ The UI is fully responsive and optimized for:
 
 ---
 
-## 🗂️ Project File Structure
-
-ragory-ltd
-│
-├── public/
-│   └── index.html
-│
-├── src/   
-│   │
-│   ├── components/
-│   │   ├── DataTable.jsx
-│   │   ├── Loading.jsx
-│   │   ├── NoorecordsFound.jsx  
-│   │
-│   ├── pages/
-│   │   └── Home.jsx
-│   │
-│   ├── data/
-│   │   └── data.json
-│   │
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
-│
-├── .gitignore
-├── package.json
-├── tailwind.config.js
-├── postcss.config.js
-├── README.md
-└── vite.config.js
-
-
 ### Install Dependencies
 npm install
 
