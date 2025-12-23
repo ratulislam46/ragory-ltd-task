@@ -50,12 +50,12 @@ console.log(data);
       <table className="min-w-full divide-y divide-gray-200">
 
         {/* Table Header */}
-        <thead className="bg-gray-50 sticky top-0 z-20">
+        <thead className="bg-blue-300 sticky top-0 z-20">
           <tr>
             {visibleColumns.map((col) => (
               <th
                 key={col}
-                className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase "
+                className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase"
               >
                 {col.replace(/_/g, " ")}
               </th>
@@ -66,7 +66,7 @@ console.log(data);
         {/* Table Body */}
         <tbody className="bg-white divide-y divide-gray-200">
           {data.map((row, rowIndex) => (
-            <tr key={rowIndex} className="hover:bg-gray-50 transition-colors duration-150">
+            <tr key={rowIndex} className="hover:bg-blue-100 hover:border-blue-300">
               {visibleColumns.map((col) => (
                 <td
                   key={col}

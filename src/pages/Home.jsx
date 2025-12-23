@@ -42,10 +42,11 @@ const Home = () => {
 
     return (
         <div className="p-4 space-y-4">
-            {/* Search  */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-2 sm:space-y-0">
+
+                {/* filter  */}
                 <select
-                    className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="border border-gray-300 rounded-md px-2 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                     value={searchField}
                     onChange={(e) => setSearchField(e.target.value)}
                 >
@@ -56,6 +57,7 @@ const Home = () => {
                     ))}
                 </select>
 
+                {/* Search  */}
                 <input
                     type="text"
                     className="border border-gray-300 rounded-md px-3 py-2 text-sm w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-blue-500"
